@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Ejercicio 3</title>
+</head>
+
+<body>
+    <div>
+        <div>
+            <h2>
+                Resultado: <span class="resultado"></span>
+            </h2>
+
+<form id="formulario">
+            <div>
+                <div>
+                    <div>
+                        <label for="">Valor 1</label>
+                        <input id="valor1" type="text" class="valor1">
+                        <p class="errorvalor1" style="color:red;font-style: italic;"></p>
+                    </div>
+                    <div>
+                        <label for="">Valor 2</label>
+                        <input id="valor2" type="text" class="valor2">
+                        <p class="errorvalor2" style="color:red;font-style: italic;"></p>
+                    </div>
+                    <div style="display: flex">
+                        <button id="btn-sumar" type="submit">
+                            Sumar
+                        </button>
+                        <button id="btn-restar" type="submit">
+                            Restar
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+
+    <script>
+            let formulario = document.getElementById("formulario");
+                formulario.addEventListener("submit", function ( event ) {
+                event.preventDefault();
+                limpiarErrores();
+
+            let valor1 = document.querySelector(".valor1").value;
+            let valor2 = document.querySelector(".valor2").value;
+            let resultado = validar(valor1,valor2);
+         
+                valor1 = parseInt(valor1);
+                valor2 = parseInt(valor2);
+
+                if(resultado == true) {
+                    operacion()
+                    };
+                });
+//*Definicion de Input para Operar
+                let suma= [];
+                let resta= [];
+            function operacion() {
+                let valor1 = document.querySelector(".valor1").value;
+                let valor2 = document.querySelector(".valor2").value;
+                valor1 = parseInt(valor1);
+                valor2 = parseInt(valor2);
+//*Suma
+                let suma = (valor1 + valor2);
+                let idsuma =document.getElementById("btn-sumar");
+                idsuma.addEventListener(`click`,function(){
+                    document.querySelector(".resultado").innerHTML = suma;
+                });        
+//*Resta
+                let resta = (valor1 - valor2);
+                    if(resta>0){
+                        let idresta =document.getElementById("btn-restar");
+                        idresta.addEventListener(`click`,function(){
+                            document.querySelector(".resultado").innerHTML = resta;
+                        })
+                    }
+                    else {
+                        let idresta =document.getElementById("btn-restar");
+                        idresta.addEventListener(`click`,function(){
+                        document.querySelector(".resultado").innerHTML = 0;
+                        })
+                    };
+            };
+
+ //*limpiar errores           
+            function limpiarErrores() {
+                document.querySelector(".errorvalor1").innerHTML = "";
+                document.querySelector(".errorvalor2").innerHTML = "";
+            };
+ //*Validar para que sean son numeros           
+            function validar(valor1,valor2) {
+                let pasamosLaValidacion = true;
+                let validacionvalor1 = /[0-9]/gim;
+                    if (validacionvalor1.test(valor1) == false) {
+                        document.querySelector(".errorvalor1").innerHTML = "Ingrese solo números."
+                        pasamosLaValidacion = false;
+                    };
+
+                let validacionvalor2 = /[0-9]/gim;
+                    if (validacionvalor2.test(valor2) == false) {
+                        document.querySelector(".errorvalor2").innerHTML = "Ingrese solo números."
+                        pasamosLaValidacion = false;
+                        };
+
+              return pasamosLaValidacion;
+
+            };
+
+    </script>
+</body>
+</html>

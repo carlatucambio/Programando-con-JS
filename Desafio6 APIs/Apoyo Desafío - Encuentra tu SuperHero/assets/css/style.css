@@ -1,0 +1,33 @@
+*{
+    margin: 0;
+    padding:0;
+}
+:root {
+    --black: #000;
+    --white:#ffff;
+    --danger: #dc3545;
+    --color1: #373a3c;
+    --color2: #dddddd;
+}
+
+.cursiva {
+font-family: 'Lobster', cursive;
+font-size: 30px;
+color: var(--white);
+}
+
+nav{
+    background: var(--color1);
+    color: #ffffff;
+    flex-direction:row-reverse;
+}
+
+header{
+    text-align: center ;
+    }
+
+
+
+section {
+    text-align: center ;
+}
